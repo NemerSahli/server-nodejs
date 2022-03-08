@@ -14,7 +14,7 @@ mongoose
   .catch(err => console.error('Could not connect to MongoDB...'));
 
 
-app.get('/',async (req, res) => {
+app.get('/users',async (req, res) => {
     // const user = User.create({firstName: 'john',
     //     lastName: 'doe',
     //     email: 'john@doe.com',
@@ -23,7 +23,9 @@ app.get('/',async (req, res) => {
     const users = await User.find();
     
     res.status(200).send({users})
-})
+});
+
+
 
 const port = process.env.PORT || 8080;
 app.listen(port, () => {
