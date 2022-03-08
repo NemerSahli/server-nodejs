@@ -4,7 +4,12 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "start:watch": "nodemon app.js"
+        "start": "node app.js",
+        "build": "npm install",
+        "server": "nodemon app.js"
+    },
+    "engines":{
+      "ndoe": "16.14.0"
     },
     "author": "",
     "license": "ISC",
