@@ -9,6 +9,17 @@ router.get('/',async (req, res) => {
     res.status(200).send({users})
 });
 
+router.get('/:id', async (req, res) => {
+  if (!req.params.id) {
+    return res.status(404),send();
+  }
+
+  await User.findOne({_id: req.params.id }, (err, user) => {
+    if (err) return res.send(err);
+    return res.send({ user });
+  });
+});
+
 router.post('/',async (req, res) => {
     const isUserExist = await User.findOne({ email: req.body.email});
    
