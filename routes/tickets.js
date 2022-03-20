@@ -14,10 +14,10 @@ router.get('/:id', async (req, res) => {
       return res.status(404),send();
     }
   
-    await Ticket.findOne({_id: req.params.id }, (err, ticket) => {
-      if (err) return res.send(err);
-      return res.send({ ticket });
-    });
+    const ticket = await Ticket.findById(req.params.id);
+    if(!ticket) return res.status(404);
+
+    return res.send({ ticket });
 });
 
 router.post('/',async (req, res) => {
